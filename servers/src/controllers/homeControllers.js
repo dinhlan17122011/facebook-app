@@ -1,19 +1,22 @@
-import db from '../models/index.js'
-let getHomePage = async (req,res)=>{
+import db from '../models/index.js';
+
+let getHomePage = async (req, res) => {
     try {
-        let data = db.User.findAll()
-        console.log("Data",data);
+        // Thêm await để đợi dữ liệu từ db trả về
+        let data = await db.User.findAll();
+        console.log("Data", data);
         
-        return res.render('homePage.ejs',{
-            data:JSON.stringify(data)
-            // data:data
-        })
+        return res.render('homePage.ejs', {
+            data: JSON.stringify(data)
+            // data: data
+        });
         
     } catch (error) {
-        console.log(error)
+        console.log(error);
+        res.status(500).send("An error occurred while fetching data");
     }
-}
+};
 
-module.exports ={
-    getHomePage:getHomePage
-}
+export default {
+    getHomePage: getHomePage
+};

@@ -3,7 +3,9 @@ import bodyParser from "body-parser";
 import view from "./config/viewEngine.js";
 import initWebRoutes from "./routes/web.js";
 import connectDB from "./config/connectDatabase.js"
-require('dotenv').config();
+// require('dotenv').config();
+import dotenv from 'dotenv';
+dotenv.config(); // Gọi hàm config để tải biến môi trường
 
 let app =express();
 
